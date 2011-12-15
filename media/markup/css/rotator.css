@@ -1,0 +1,82 @@
+.RotatorWrapper
+{
+	width: 100%;
+	min-height: 50px;
+	position: relative;
+	overflow: hidden;
+}
+	.RotatorPrevLink,
+	.RotatorNextLink
+	{
+		width: 21px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		z-index: 5;
+		text-decoration: none;
+	}
+	.RotatorPrevLink
+	{
+		left: 0;
+	}
+	.RotatorPrevLink span
+	{
+		width: 21px;
+		height: 21px;
+		margin: -11px auto 0 auto;
+		display: block;
+		position: relative;
+		top: 50%;
+		background: url(../img/Sprite.png) no-repeat -85px -100px;
+		cursor: pointer;
+	}
+	.RotatorPrevLink:hover span
+	{
+		background: url(../img/Sprite.png) no-repeat -85px -130px;
+	}
+	.RotatorNextLink
+	{
+		right: 0;
+	}
+	.RotatorNextLink span
+	{
+		width: 21px;
+		height: 21px;
+		margin: -11px auto 0 auto;
+		display: block;
+		position: relative;
+		top: 50%;
+		background: url(../img/Sprite.png) no-repeat -125px -100px;
+		cursor: pointer;
+	}
+	.RotatorNextLink:hover span
+	{
+		background: url(../img/Sprite.png) no-repeat -125px -130px;
+	}
+	.Rotator
+	{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+		.RotatorItem
+		{
+			width: 100%;
+			float: left;
+			position: relative;
+			text-align: center;
+		}
+		.RotatorItem a
+		{
+			
+		}
+	.RotatorContainer
+	{
+		width: 400%;
+		max-width: 32766px;
+		margin-left: 0;
+		position: relative;
+		left: 0px;
+		overflow: hidden;
+	}
