@@ -4,8 +4,8 @@ import os, sys
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-PROJECT_NAME = 'template_project'
-PROJECT_TITLE = u'Шаблонный проект'
+PROJECT_NAME = 'ekaboom'
+PROJECT_TITLE = u'Подарки оригинальные авторские ручной работы. Екатеринбург'
 PROJECT_DIR = os.path.dirname(os.path.realpath(__file__))
 
 ROOT_URLCONF = '%s.urls' % PROJECT_NAME
