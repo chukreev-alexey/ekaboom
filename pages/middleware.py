@@ -36,10 +36,8 @@ class PageMiddleware(object):
         request.PROJECT_TITLE = settings.PROJECT_TITLE
         if not view_func.__module__ in ('website.views', ):
             return None
-        try:
-            url = view_kwargs["page_url"]
-        except:
-            url = request.path[1:-1]
+        
+        url = "/".join(filter(lambda x: bool(x), request.path_info.split('/')))
         
         request = self.common_actions(request)
         try:

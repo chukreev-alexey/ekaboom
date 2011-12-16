@@ -1,14 +1,20 @@
 # -*- coding: utf-8 -*-
-
 from django.contrib import admin
+from django import forms
+from django.db import models
 
 from pages.models import Page, InfoBlock
 from treeadmin import TreeAdmin
+
+from gallery.admin import GalleryInline
 
 class PageAdmin(TreeAdmin):
     fieldsets = [
         (None, {
             'fields': ['name', 'url', 'parent', 'redirect_to', 'visible'], 'classes': ['wide']
+        }),
+        (u'Ротатор товаров', {
+            'fields': ['products'], 'classes': ['collapse']
         }),
         (u'Содержимое страницы', {
             'fields': ['content'], 'classes': ['collapse']
@@ -18,8 +24,11 @@ class PageAdmin(TreeAdmin):
         }),
     ]
     tree_title_field = 'name'
-    tree_display = ('name', 'path',)
-
+    tree_display = ('name', 'path')
+    
+    formfield_overrides = {
+        models.ManyToManyField: {'widget': forms.CheckboxSelectMultiple},
+    }
     class Meta:
         model = Page
 admin.site.register(Page, PageAdmin)

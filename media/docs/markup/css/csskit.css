@@ -1,0 +1,169 @@
+.RoundedCorners
+{
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: #fff;
+}
+.RoundedCorners:hover
+{
+	color: white;
+}
+	.d-shadow
+	{
+		padding: 0 0 10px 0;
+		display: block;
+		position: relative;
+	}
+		.d-shadow-wrap
+		{
+			padding: 10px 10px 0 10px;
+			position: relative;
+			display: block;
+			overflow: hidden;
+			//zoom: 1;
+		}
+			.d-sh-cn
+			{
+				position: absolute;
+				left: -10px;
+				z-index:-1;
+				display: block;
+			}
+			.d-sh-tl,
+			.d-sh-tr
+			{
+				height: 1000px;
+				top: -10px;
+			}
+			.d-sh-tl,
+			.d-sh-bl
+			{
+				width: 100%;
+				clear: both;
+			}
+			.d-sh-tr,
+			.d-sh-br
+			{
+				width: 10px;
+				margin-left: 100%;
+			}
+			.d-sh-bl,
+			.d-sh-br
+			{
+				height: 10px;
+			}
+			.d-sh-bl
+			{
+				left: -10px;
+				padding-right: 0px;
+				clip: rect(auto auto auto 10px);
+			}
+			.d-sh-br
+			{
+				left: -10px;
+			}
+			.d-sh-cn
+			{
+				background: url(../img/Sprite.png) no-repeat -88px -31px;
+			}
+
+.FormList
+{
+	width: 100%;
+	margin: 10px 0;
+}
+.FormListItem
+{
+	width: 100%;
+	padding: 0 0 1em 0;
+	margin: 0 0 1em 0;
+	border-bottom: solid 1px #ccc;
+}
+.FormList ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+.FormList ul li:after
+{
+	display: block;
+	clear: both;
+	content: ""
+}
+.FormList ul li
+{
+	margin: 0 2% 0 0;
+	padding: 0 0 0.6em 0;
+	width: 31%;
+	position: relative;
+	float: left;
+}
+.FormList .FormLabel
+{
+	width: 100%;
+	float: left;
+	font-weight: bold;
+	padding: 0.2em 1em 0 0;
+}
+.FormList .FormField
+{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+.FormList .FormField input,
+.FormList .FormField textarea
+{
+	width: 98.5%;
+	/*overflow: auto;*/
+}
+.FormList .FormField a
+{
+	font-size: 0.8em;
+	margin: 0 0.5em 0 0;
+}
+.FormList .FormField label
+{
+	font-size: 0.8em;
+}
+.FormList .FormField select
+{
+	width: 99.5%;
+}
+.FormList .FormError
+{
+	width: 100%;
+	//font-size: 0;
+	clear: both;
+}
+.FormList .FormError span
+{
+	width: 100%;
+	display: block;
+	font-size: 0.8em;
+	color: Red;
+	padding: 0.3em 0 0 22%;
+	//font-size: 14px;
+}
+.FormList .errorlist
+{
+	display: block;
+	font-size: 0.8em;
+	color: Red;
+	padding: 0.3em 0 0 22%;
+	//font-size: 14px;
+	clear: both;
+}
+.FormList .errorlist li
+{
+	padding: 0;
+}
+.SubmitButton
+{
+	margin: 20px 0;
+	padding: 10px 20px;
+	font-size: 18px;
+}

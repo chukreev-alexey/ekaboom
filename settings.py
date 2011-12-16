@@ -44,6 +44,8 @@ INSTALLED_APPS = (
     'treeadmin',
     'south',
     'seo',
+    'gallery',
+    'cart',
     'pages',
     'website',
 )

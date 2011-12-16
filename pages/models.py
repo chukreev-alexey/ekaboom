@@ -10,6 +10,7 @@ from filebrowser.fields import FileBrowseField
 from tinymce import models as tinymce_models
 from mptt.models import MPTTModel
 
+from website.models import Product
 
 class InfoBlock(models.Model):
     title = models.CharField(u'Название', max_length=255)
@@ -60,6 +61,9 @@ class Page(MPTTModel):
             related_name='children', verbose_name=u'Родительский элемент')
     redirect_to = models.ForeignKey('self', null=True, blank=True,
             related_name='redirected', verbose_name=u'Перенаправить на страницу')
+    products = models.ManyToManyField(Product, verbose_name=u'Ротатор товаров',
+        blank=True)
+    
     visible = models.BooleanField(u'Показывать?', default=False)
     
     allpages = models.Manager()
@@ -94,8 +98,6 @@ class Page(MPTTModel):
         super(Page, self).delete(*args, **kwargs)
     
     def __unicode__(self):
-        #if self.level > 0:
-        #    return  u"%s %s" % (u"".join([u"___" for i in xrange(self.level)]), self.name)
         return self.name
     
     class Meta:
