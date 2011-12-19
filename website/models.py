@@ -92,7 +92,7 @@ class Category(models.Model):
 
 class Product(models.Model):
     name = models.CharField(u'Название', max_length=255)
-    category = models.ForeignKey(Category, verbose_name=u'Автор')
+    category = models.ForeignKey(Category, verbose_name=u'Категория')
     author = models.ForeignKey(Author, verbose_name=u'Автор')
     materials = tinymce_models.HTMLField(u'Материалы', blank=True, null=True)
     content = tinymce_models.HTMLField(u'Описание', blank=True, null=True)
@@ -108,11 +108,11 @@ class Product(models.Model):
             
     class Meta:
         ordering = ('sort', )
-        verbose_name = u'категория'
-        verbose_name_plural = u'категории товаров'
+        verbose_name = u'товар'
+        verbose_name_plural = u'товары'
 
 class ProductPrice(models.Model):
-    product = models.ForeignKey(Author, verbose_name=u'Товар')
+    product = models.ForeignKey(Product, verbose_name=u'Товар')
     label = models.CharField(u'Ярлык', max_length=255)
     price = models.IntegerField(u'Цена')
     
