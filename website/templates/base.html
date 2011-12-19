@@ -61,7 +61,7 @@
                                 <div class="Rotator" id="Rotator">
                                     {% for item in rotators %}{% with item.gallery.all as images %}{% if images.0 %}
                                     <div class="RotatorItem">
-                                        <a href="{{ item.get_absolute_url }}"><img src="{% version images.0 'category_small' %}" alt="{{ item.name }}" /></a>
+                                        <a href="{{ item.get_absolute_url }}"><img src="{% version images.0.image 'category_small' %}" alt="{{ item.name }}" /></a>
                                     </div>
                                     {% endif %}{% endwith %}{% endfor %}
                                 </div>
