@@ -75,6 +75,7 @@ class Author(models.Model):
         
 class Category(models.Model):
     name = models.CharField(u'Название', max_length=100)
+    url = models.CharField(u'Адрес', max_length=100, unique=True)
     image = FileBrowseField(u"Фото", format='Image', max_length=255)
     sort = models.IntegerField(u'Порядок', default=0)
     visible = models.BooleanField(u'Показывать', default=False)
@@ -84,7 +85,10 @@ class Category(models.Model):
     
     def __unicode__(self):
         return self.name
-            
+    
+    def get_absolute_url(self):
+        return reverse('category_detail', kwargs={'category': self.url})
+    
     class Meta:
         ordering = ('sort', )
         verbose_name = u'категория'
@@ -112,7 +116,8 @@ class Product(models.Model):
         verbose_name_plural = u'товары'
 
 class ProductPrice(models.Model):
-    product = models.ForeignKey(Product, verbose_name=u'Товар')
+    product = models.ForeignKey(Product, verbose_name=u'Товар',
+        related_name='prices')
     label = models.CharField(u'Ярлык', max_length=255)
     price = models.IntegerField(u'Цена')
     

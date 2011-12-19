@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load fb_versions common_tags %}
+
+{% block content %}
+<div class="ContentText">
+    <div class="ProductsList">
+        {% for item in product_list %}
+		<div class="ProductItem">
+            
+			{% if item.gallery.0 %}<img src="{% version item.gallery.0 'product_big' %}" alt="{{ item.name }}" />{% endif %}
+			<div class="ProductItemInfo">
+				<span class="ProductItemTitle">{{ item.name }}</span>
+				Автор: {{ item.author }}
+                {% if item.materials %}
+				<div class="ProductItemMaterials">
+					Материалы:
+					{{ item.materials|safe }}
+				</div>
+                {% endif %}
+                {% for price in item.prices.all %}
+                    <span class="ProductItemPrice">Цена: {{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
+                    <a href="#" class="RoundedCorners ProductItemBuyButton">
+                        <span class="d-shadow">
+                            <span class="d-shadow-wrap">
+                                Купить
+                                <span class="d-sh-cn d-sh-tl">&nbsp;</span>
+                                <span class="d-sh-cn d-sh-tr">&nbsp;</span>
+                            </span>
+                            <span class="d-sh-cn d-sh-bl">&nbsp;</span>
+                            <span class="d-sh-cn d-sh-br">&nbsp;</span>
+                        </span>
+                    </a>
+                {% endfor%}
+			</div>
+		</div>
+        {% endfor %}
+	</div>
+</div>
+{% endblock %}

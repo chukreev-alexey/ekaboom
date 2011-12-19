@@ -4,7 +4,7 @@ from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from django.conf import settings
 from pages.models import Page, InfoBlock
-from website.models import Settings
+from website.models import Settings, Category
 
 class PageMiddleware(object):
     """
@@ -40,6 +40,9 @@ class PageMiddleware(object):
         url = "/".join(filter(lambda x: bool(x), request.path_info.split('/')))
         
         request = self.common_actions(request)
+        request.top_menu = list(Page.objects.filter(pk=1)) + list(Page.objects.filter(level=1))
+        request.category_menu = Category.objects.all()
+        
         try:
             page = Page.objects.get(path=url)
             request.page = page

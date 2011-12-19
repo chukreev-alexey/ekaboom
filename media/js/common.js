@@ -23,4 +23,13 @@ $(document).ready(function() {
             }
         }
     });
+    /*Rotator*/
+    $("#Rotator").rotator({
+		'items': '.RotatorItem',
+		'prev': '#RotatorPrevLink',
+		'next': '#RotatorNextLink',
+		'visibleCount': 4,
+		'changeCount': 2,
+		'keyboardNavigation': true
+	});
 });

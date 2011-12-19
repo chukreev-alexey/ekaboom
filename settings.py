@@ -62,6 +62,9 @@ FILEBROWSER_PATH_TINYMCE = os.path.join(ADMIN_MEDIA_ROOT , 'tiny_mce/')
 FILEBROWSER_VERSIONS_BASEDIR = '_versions_'
 FILEBROWSER_VERSIONS = {
     'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 40, 'height': 40, 'opts': 'upscale'},
+    'category_small': {'verbose_name': u'Для списка категорий', 'width': 67, 'height': 90, 'opts': 'upscale'},
+    'product_small': {'verbose_name': u'Маленькая для карточки товаров', 'width': 60, 'height': 45, 'opts': 'upscale'},
+    'product_big': {'verbose_name': u'Большая для карточки товаров', 'width': 240, 'height': 180, 'opts': 'upscale'},
 }
 FILEBROWSER_ADMIN_VERSIONS = ['fb_thumb']
 FILEBROWSER_ADMIN_THUMBNAIL ='fb_thumb'

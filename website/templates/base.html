@@ -1,19 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!DOCTYPE html>
+<html>
 <head>
 	<title>{{ request.settings.project }}{% block title %}{% if request.page.title %} - {{ request.page.title }}{% endif %}{% endblock %}</title>
-    {% block meta %}{{ request.page.meta|default:""|safe }}{% endblock %}
+	
 	<meta name="robots" content="all" />
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="cache-control" content="no-cache" />
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="/admin_media/js/jquery.min.js"></script>
-	<script type="text/javascript" src="/media/js/common.js"></script>
+	<script type="text/javascript" src="/media/js/jquery.rotator.js"></script>
+    <script type="text/javascript" src="/media/js/common.js"></script>
+    <link href="/media/css/main.css" rel="stylesheet" type="text/css"/>
+	<!--[if lte IE 6]>
+		<link href="/media/css/ie6.css" rel="stylesheet" type="text/css" />
+	<![endif]-->
 </head>
 <body>
-{% csrf_token %}
-{% if request.page.name %}<h1>{{ request.page.name }}</h1>{% endif %}
-{{ request.page.content|default:""|safe }}
+    {% csrf_token %}
+	<div class="LeftMargin">&nbsp;</div>
+	<div class="RightMargin">&nbsp;</div>
+
+	<div class="MaxWidth">
+		<div class="MinWidth">
+			<div class="Wrapper">
+				<div class="DecoratorBg"></div>
+				<div class="DecoratorBgLeft"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
+				<div class="DecoratorBgRight"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
+				<div class="Header">
+					<div class="Logo"><a href="/"><img src="/media/img/logo.jpg" alt="Логотип"/></a></div>
+					<ul class="Menu">
+                        {% for item in request.top_menu %}
+						<li><a href="{{ item.get_absolute_url }}" {% if item == request.page %}class="Active"{% endif %}>{{ item.name }}</a></li>
+                        {% endfor %}
+					</ul>
+				</div>
+				<div class="Content">
+					<div class="LeftColumn">
+						<ul class="SideMenu">
+                            {% for item in request.category_menu %}
+							<li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+                            {% endfor %}
+						</ul>
+						<div class="SocialWidgets">
+                            {{ request.infoblock.social_buttons|default:""|safe }}
+						</div>
+					</div>
+					<div class="CentralColumn">
+                        {% block content %}
+                            <div class="ContentText">
+                            {{ request.page.content|default:""|safe }}
+                            </div>
+						{% endblock %}
+                        
+                        {% block rotator %}
+                            {% if request.page.id %}{% with request.page.products.all as rotators %}{% if rotators %}
+                            <div class="RotatorWrapper">
+                                <a href="#" id="RotatorPrevLink" class="RotatorPrevLink"><span>&nbsp;</span></a>
+                                <a href="#" id="RotatorNextLink" class="RotatorNextLink"><span>&nbsp;</span></a>
+                                <div class="Rotator" id="Rotator">
+                                    {% for item in rotator %}{% with item.gallery.all as images %}{% if images.0 %}
+                                    <div class="RotatorItem">
+                                        <a href="{{ item.get_absolute_url }}"><img src="{{ images.0 }}" alt="" /></a>
+                                    </div>
+                                    {% endif %}{% endwith %}{% endfor %}
+                                </div>
+                            </div>
+                            {% endif %}{% endwith %}{% endif %}
+                        {% endblock %}
+					</div>
+					<div class="RightColumn">
+						<a href="#" class="NewsItem">
+                            {{ request.infoblock.skidka|default:""|safe }}
+						</a>
+						<div class="Counters">
+							{{ request.infoblock.metrika|default:""|safe }}
+						</div>
+					</div>
+				</div>
+				<div class="DecoratorBgBottom"></div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

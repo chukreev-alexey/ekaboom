@@ -9,8 +9,8 @@ admin.site.register(Settings)
 admin.site.register(News)
 
 class CategoryAdmin(admin.ModelAdmin):
-    list_display = ('name', 'image', 'sort', 'visible')
-    list_editable = ('image', 'sort', 'visible')
+    list_display = ('name', 'url', 'image', 'sort', 'visible')
+    list_editable = ('url', 'image', 'sort', 'visible')
 admin.site.register(Category, CategoryAdmin)
 
 admin.site.register(Author)

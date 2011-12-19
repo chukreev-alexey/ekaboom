@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load fb_versions %}
+
+{% block content %}
+	<div class="ContentText">
+        {{ request.page.content|default:""|safe }}
+    </div>
+	<div class="ProductsList">
+        {% for item in object_list %}
+		<a href="{{ item.get_absolute_url }}" class="ProductsListItem">{{ item.name }}<img src="{% version item.image 'category_small' %}" alt="{{ item.name }}" title="{{ item.name }}"/></a>
+		{% endfor %}
+	</div>
+{% endblock %}

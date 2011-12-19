@@ -1,0 +1,544 @@
+html,body,ul,ol,li,p,h1,h2,h3,h4,h5,h6,form,a,img {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	list-style: none;
+}
+html {
+	width: 100%;
+	height: 100%;
+	overflow-y: scroll;
+}
+body {
+	width: 100%;
+	height: auto !important;
+	height: 100%;
+	min-height: 100%;
+	font-size: 100.01%;
+	font-family: Arial;
+	position: relative;
+	background: #fff;
+	vertical-align: baseline;
+	color: black;
+}
+input[type="button"] {  width: auto; overflow: visible; }
+button, input, select, textarea { margin: 0; }
+img { vertical-align: bottom; }
+
+.LeftMargin, .RightMargin {
+	display: none;
+}
+
+a {
+	color: #0099E1;
+}
+a:hover {
+	color: #FF6633;
+}
+.MaxWidth {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+.MinWidth {
+	min-width: 985px;
+	margin: 0 auto;
+	position: relative;
+	overflow: hidden;
+}
+.DecoratorBg,
+.DecoratorBgBottom {
+	width: 100%;
+	height: 23px;
+	left: 0;
+	position: absolute;
+	background: url(../img/Sprite.png) center 0 no-repeat;
+}
+.DecoratorBg {
+	top: 0;
+}
+.DecoratorBgBottom {
+	bottom: 0;
+}
+.DecoratorBgLeft {
+	width: 22px;
+	min-height: 768px;
+	height: 100%;
+	position: absolute;
+	left: 0;
+	background: url(../img/Sprite.png) -45px -16px repeat-y;
+}
+.DecoratorBgRight {
+	width: 22px;
+	min-height: 768px;
+	height: 100%;
+	right: 0;
+	position: absolute;
+	background: url(../img/Sprite.png) 0 -16px repeat-y;
+}
+.DecoratorFadeGradient {
+	height: 135px;
+	width: 23px;
+	background: url(../img/Sprite.png) -85px -160px no-repeat;
+	position: absolute;
+	bottom: 0;
+}
+.DecoratorInnerWrap
+{
+	position: relative;
+	height: 100%;
+}
+/*----------------------------------- Header --------------------------------*/
+.Header {
+	width: 100%;
+	margin: 0 auto;
+	overflow: hidden;
+	padding: 20px 0 0 0;
+}
+.Logo {
+	display: block;
+	text-align: right;
+}
+.Logo a {
+	display: block;
+}
+.Menu {
+	width: 80%;
+	padding: 10px 0;
+	float: right;
+	display: block;
+}
+.Menu li {
+	display: inline;
+}
+.Menu a {
+	padding: 5px 2% 5px 0;
+	margin: 0 2% 0 0;
+	color: black;
+	text-decoration: none;
+	border-right: 1px solid #c8c3bf;
+}
+.Menu a:hover {
+	color: #FF6633;
+	text-decoration: underline;
+}
+.Menu .Active {
+	font-weight: bold;
+}
+/*----------------------------------- Content --------------------------------*/
+.Wrapper {
+	padding: 23px 35px 50px 35px;
+	margin: 0 auto;
+	min-height: 600px;
+	font-size: 0.8em;
+}
+
+.Content {
+	overflow: hidden;
+}
+
+.LeftColumn {
+	float: left;
+	width: 17%;
+	margin: 15px 3% 0 0;
+	padding: 0 0 30px 0;
+	min-height: 400px;
+	position: relative;
+}
+	.SideMenu {
+		list-style: none;
+		line-height: 2;
+	}
+		.SideMenu li {
+			list-style: none;
+			display: block;
+		}
+		.SideMenu li .Active {
+			font-weight: bold;
+		}
+			.SideMenu li a {
+				color: #929292;
+				display: block;
+				text-decoration: none;
+			}
+			.SideMenu li a:hover {
+				color: #FF6633;
+				text-decoration: underline;
+			}
+	.SocialWidgets {
+		padding: 15px;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+
+
+.CentralColumn {
+	float: left;
+	width: 52%;
+}
+	.SearchFilterLink {
+		line-height: 3;
+		text-decoration: none;
+		color: black;
+		border-bottom: 1px dashed;
+	}
+	.ContentText {
+		padding: 15px 25px 15px 0;
+	}
+		.ContentText ul,
+		.ContentText ol {
+			margin: 0 0 0 35px;
+			line-height: 1.5;
+		}
+			.ContentText ul li {
+				list-style-type: disc;
+			}
+			.ContentText ol li {
+				list-style-type: decimal;
+			}
+			.ContentText p {
+				margin: 0 0 15px 0;
+			}
+	.ProductsList {
+		margin: 10px 0;
+	}
+		.ProductsListItem {
+			width: 20%;
+			margin: 0 1% 5px 1%;
+			display: inline-block;
+			vertical-align: top;
+			text-align: center;
+			text-decoration: none;
+			color: black;
+		}
+			.ProductsListItem img {
+				margin: 0 auto;
+				display: block;
+				padding: 0 15px;
+				border: 1px solid #cbcbcb;
+			}
+		.ProductItem {
+			margin: 0 0 15px 0;
+			position: relative;
+		}
+		.ProductItem img {
+			width: 50%;
+			margin-right: 5%;
+			float: left;
+		}
+		.ProductItemInfo {
+			overflow: hidden;
+			line-height: 1.7;
+		}
+		.ProductItemTitle {
+			display: block;
+			font-weight: bold;
+		}
+		.ProductItemMaterials {
+			margin: 15px 0 0 0;
+		}
+		.ProductItemMaterials li{
+			margin-left: 2em;
+			list-style: disc !important;
+		}
+		.ProductItemPrice {
+			padding: 15px 0;
+			display: block;
+			color: #900;
+			font-size: 18px;
+			font-weight: normal;
+			letter-spacing: -1px;
+		}
+		.ProductItemBuyButton {
+			padding: 5px 10px 5px;
+			margin: 3px 0;
+			display: inline-block;
+			color: white;
+			text-decoration: none;
+			cursor: pointer;
+			font-size: 12px;
+		}
+	.CentralColumn .RotatorWrapper {
+		width: 90%;
+	}
+
+
+.RightColumn {
+	float: left;
+	width: 20%;
+	min-height: 400px;
+	position: relative;
+	padding: 15px 0 30px 0;
+}
+	.NewsItem {
+		clear: both;
+	}
+		.NewsItem span {
+			padding: 2px 5px;
+			position: relative;
+			background: white;
+			top: -0.7em;
+		}
+	.Counters {
+		padding: 15px;
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
+	
+
+/* --------------------- Csskit.css ------------------------*/
+.RoundedCorners
+{
+	display: inline-block;
+	position: relative;
+	text-decoration: none;
+	color: #fff;
+}
+.RoundedCorners:hover
+{
+	color: white;
+}
+	.d-shadow
+	{
+		padding: 0 0 10px 0;
+		display: block;
+		position: relative;
+	}
+		.d-shadow-wrap
+		{
+			padding: 10px 10px 0 10px;
+			position: relative;
+			display: block;
+			overflow: hidden;
+			//zoom: 1;
+		}
+			.d-sh-cn
+			{
+				position: absolute;
+				left: -10px;
+				z-index:-1;
+				display: block;
+			}
+			.d-sh-tl,
+			.d-sh-tr
+			{
+				height: 1000px;
+				top: -10px;
+			}
+			.d-sh-tl,
+			.d-sh-bl
+			{
+				width: 100%;
+				clear: both;
+			}
+			.d-sh-tr,
+			.d-sh-br
+			{
+				width: 10px;
+				margin-left: 100%;
+			}
+			.d-sh-bl,
+			.d-sh-br
+			{
+				height: 10px;
+			}
+			.d-sh-bl
+			{
+				left: -10px;
+				padding-right: 0px;
+				clip: rect(auto auto auto 10px);
+			}
+			.d-sh-br
+			{
+				left: -10px;
+			}
+			.d-sh-cn
+			{
+				background: url(../img/Sprite.png) no-repeat -88px -31px;
+			}
+
+.FormList
+{
+	width: 100%;
+	margin: 10px 0;
+}
+.FormListItem
+{
+	width: 100%;
+	padding: 0 0 1em 0;
+	margin: 0 0 1em 0;
+	border-bottom: solid 1px #ccc;
+}
+.FormList ul
+{
+	list-style-type: none;
+	padding: 0;
+	margin: 0;
+}
+.FormList ul li:after
+{
+	display: block;
+	clear: both;
+	content: ""
+}
+.FormList ul li
+{
+	margin: 0 2% 0 0;
+	padding: 0 0 0.6em 0;
+	width: 31%;
+	position: relative;
+	float: left;
+}
+.FormList .FormLabel
+{
+	width: 100%;
+	float: left;
+	font-weight: bold;
+	padding: 0.2em 1em 0 0;
+}
+.FormList .FormField
+{
+	width: 100%;
+	float: left;
+	position: relative;
+}
+
+.FormList .FormField input,
+.FormList .FormField textarea
+{
+	width: 98.5%;
+	/*overflow: auto;*/
+}
+.FormList .FormField a
+{
+	font-size: 0.8em;
+	margin: 0 0.5em 0 0;
+}
+.FormList .FormField label
+{
+	font-size: 0.8em;
+}
+.FormList .FormField select
+{
+	width: 99.5%;
+}
+.FormList .FormError
+{
+	width: 100%;
+	//font-size: 0;
+	clear: both;
+}
+.FormList .FormError span
+{
+	width: 100%;
+	display: block;
+	font-size: 0.8em;
+	color: Red;
+	padding: 0.3em 0 0 22%;
+	//font-size: 14px;
+}
+.FormList .errorlist
+{
+	display: block;
+	font-size: 0.8em;
+	color: Red;
+	padding: 0.3em 0 0 22%;
+	//font-size: 14px;
+	clear: both;
+}
+.FormList .errorlist li
+{
+	padding: 0;
+}
+.SubmitButton
+{
+	margin: 20px 0;
+	padding: 10px 20px;
+	font-size: 18px;
+}
+
+
+/*---------------------------- Rotator ------------------------ */
+.RotatorWrapper
+{
+	width: 100%;
+	min-height: 50px;
+	position: relative;
+	overflow: hidden;
+}
+	.RotatorPrevLink,
+	.RotatorNextLink
+	{
+		width: 21px;
+		height: 100%;
+		display: block;
+		position: absolute;
+		top: 0;
+		z-index: 5;
+		text-decoration: none;
+	}
+	.RotatorPrevLink
+	{
+		left: 0;
+	}
+	.RotatorPrevLink span
+	{
+		width: 21px;
+		height: 21px;
+		margin: -11px auto 0 auto;
+		display: block;
+		position: relative;
+		top: 50%;
+		background: url(../img/Sprite.png) no-repeat -85px -100px;
+		cursor: pointer;
+	}
+	.RotatorPrevLink:hover span
+	{
+		background: url(../img/Sprite.png) no-repeat -85px -130px;
+	}
+	.RotatorNextLink
+	{
+		right: 0;
+	}
+	.RotatorNextLink span
+	{
+		width: 21px;
+		height: 21px;
+		margin: -11px auto 0 auto;
+		display: block;
+		position: relative;
+		top: 50%;
+		background: url(../img/Sprite.png) no-repeat -125px -100px;
+		cursor: pointer;
+	}
+	.RotatorNextLink:hover span
+	{
+		background: url(../img/Sprite.png) no-repeat -125px -130px;
+	}
+	.Rotator
+	{
+		width: 100%;
+		height: 100%;
+		position: relative;
+	}
+		.RotatorItem
+		{
+			width: 100%;
+			float: left;
+			position: relative;
+			text-align: center;
+		}
+		.RotatorItem a
+		{
+			
+		}
+	.RotatorContainer
+	{
+		width: 400%;
+		max-width: 32766px;
+		margin-left: 0;
+		position: relative;
+		left: 0px;
+		overflow: hidden;
+	}
