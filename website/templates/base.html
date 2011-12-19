@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{% load fb_versions %}<!DOCTYPE html>
 <html>
 <head>
 	<title>{{ request.settings.project }}{% block title %}{% if request.page.title %} - {{ request.page.title }}{% endif %}{% endblock %}</title>
@@ -59,9 +59,9 @@
                                 <a href="#" id="RotatorPrevLink" class="RotatorPrevLink"><span>&nbsp;</span></a>
                                 <a href="#" id="RotatorNextLink" class="RotatorNextLink"><span>&nbsp;</span></a>
                                 <div class="Rotator" id="Rotator">
-                                    {% for item in rotator %}{% with item.gallery.all as images %}{% if images.0 %}
+                                    {% for item in rotators %}{% with item.gallery.all as images %}{% if images.0 %}
                                     <div class="RotatorItem">
-                                        <a href="{{ item.get_absolute_url }}"><img src="{{ images.0 }}" alt="" /></a>
+                                        <a href="{{ item.get_absolute_url }}"><img src="{% version images.0 'category_small' %}" alt="{{ item.name }}" /></a>
                                     </div>
                                     {% endif %}{% endwith %}{% endfor %}
                                 </div>

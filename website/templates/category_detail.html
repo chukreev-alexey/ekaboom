@@ -7,7 +7,7 @@
         {% for item in product_list %}
 		<div class="ProductItem">
             
-			{% if item.gallery.0 %}<img src="{% version item.gallery.0 'product_big' %}" alt="{{ item.name }}" />{% endif %}
+			{% if item.gallery.all.0 %}<img src="{% version item.gallery.all.0 'product_big' %}" alt="{{ item.name }}" />{% endif %}
 			<div class="ProductItemInfo">
 				<span class="ProductItemTitle">{{ item.name }}</span>
 				Автор: {{ item.author }}
