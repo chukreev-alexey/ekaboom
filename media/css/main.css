@@ -419,7 +419,7 @@ a:hover {
 			}
 			.d-sh-cn
 			{
-				background: url(../img/Sprite.png) no-repeat -88px -31px;
+				background: url(../img/Sprite.png) no-repeat -3px -31px;
 			}
 
 .FormList
@@ -554,12 +554,12 @@ a:hover {
 		display: block;
 		position: relative;
 		top: 50%;
-		background: url(../img/Sprite.png) no-repeat -85px -100px;
+		background: url(../img/Sprite.png) no-repeat 0px -100px;
 		cursor: pointer;
 	}
 	.RotatorPrevLink:hover span
 	{
-		background: url(../img/Sprite.png) no-repeat -85px -130px;
+		background: url(../img/Sprite.png) no-repeat 0px -130px;
 	}
 	.RotatorNextLink
 	{
@@ -573,12 +573,12 @@ a:hover {
 		display: block;
 		position: relative;
 		top: 50%;
-		background: url(../img/Sprite.png) no-repeat -125px -100px;
+		background: url(../img/Sprite.png) no-repeat -40px -100px;
 		cursor: pointer;
 	}
 	.RotatorNextLink:hover span
 	{
-		background: url(../img/Sprite.png) no-repeat -125px -130px;
+		background: url(../img/Sprite.png) no-repeat -40px -130px;
 	}
 	.Rotator
 	{
