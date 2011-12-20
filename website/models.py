@@ -118,7 +118,7 @@ class Product(models.Model):
 class ProductPrice(models.Model):
     product = models.ForeignKey(Product, verbose_name=u'Товар',
         related_name='prices')
-    label = models.CharField(u'Ярлык', max_length=255)
+    label = models.CharField(u'Ярлык', max_length=255, blank=True, null=True)
     price = models.IntegerField(u'Цена')
     
     def __unicode__(self):

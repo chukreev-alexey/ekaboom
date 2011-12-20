@@ -4,7 +4,7 @@
 {% block categoty_menu %}
 <ul class="SideMenu">
     {% for item in request.category_menu %}
-	<li><a {% if item == category %}class="Active{% endif %} href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+	<li><a {% if item == category %}class="Active"{% endif %} href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
     {% endfor %}
 </ul>
 {% endblock %}
@@ -12,39 +12,40 @@
 {% block content %}
 <div class="ContentText">
     <div class="ProductsList">
-        {% for item in product_list %}
-		<div class="ProductItem"> 
-			{% if item.gallery.all.0 %}<img src="{% version item.gallery.all.0.image 'product_big' %}" alt="{{ item.name }}" />{% endif %}
-			<div class="ProductItemInfo">
-				<span class="ProductItemTitle">{{ item.name }}</span>
-				Автор: {{ item.author }}
+    {% for item in product_list %}
+        <div class="ProductItem">
+            {% if item.gallery.all.0 %}<img src="{% version item.gallery.all.0.image 'product_big' %}" alt="{{ item.name }}" />{% endif %}
+            <div class="ProductItemInfo">
+                <span class="ProductItemTitle">{{ item.name }}</span>
+                Автор: {{ item.author }}
                 {% if item.materials %}
-				<div class="ProductItemMaterials">
-					Материалы:
-					{{ item.materials|safe }}
-				</div>
+                    <div class="ProductItemMaterials">
+                    Материалы:
+                    {{ item.materials|safe }}
+                    </div>
                 {% endif %}
-                <div class="ProductItemPriceList">
-				{% for price in item.prices.all %}
-					<div class="ProductItemPriceRow">
-						<span class="ProductItemPrice">Цена: {{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
-						<a href="#" class="RoundedCorners ProductItemBuyButton">
-							<span class="d-shadow">
-								<span class="d-shadow-wrap">
-									Купить
-									<span class="d-sh-cn d-sh-tl">&nbsp;</span>
-									<span class="d-sh-cn d-sh-tr">&nbsp;</span>
-								</span>
-								<span class="d-sh-cn d-sh-bl">&nbsp;</span>
-								<span class="d-sh-cn d-sh-br">&nbsp;</span>
-							</span>
-						</a>
-					</div>
-				{% endfor%}
+            </div>
+            <div class="ProductItemPriceList">
+            {% for price in item.prices.all %}
+                <div class="ProductItemPriceRow">
+                    {% if price.label %}<span class="ProductItemPrice">{{ price.label }}</span>{% endif %}
+                    <span class="ProductItemPrice">{{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
+                    <a href="#" class="RoundedCorners ProductItemBuyButton">
+                        <span class="d-shadow">
+                            <span class="d-shadow-wrap">
+                                Купить
+                                <span class="d-sh-cn d-sh-tl">&nbsp;</span>
+                                <span class="d-sh-cn d-sh-tr">&nbsp;</span>
+                            </span>
+                            <span class="d-sh-cn d-sh-bl">&nbsp;</span>
+                            <span class="d-sh-cn d-sh-br">&nbsp;</span>
+                        </span>
+                    </a>
                 </div>
-			</div>
+            {% endfor%}
+            </div>
         </div>
-        {% endfor %}
-	</div>
+    {% endfor %}
+    </div>
 </div>
 {% endblock %}
