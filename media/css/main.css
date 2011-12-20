@@ -51,7 +51,8 @@ a:hover {
 	height: 23px;
 	left: 0;
 	position: absolute;
-	background: url(../img/Sprite.png) -60px 0 repeat-x;
+	z-index: 10;
+	background: url(../img/Sprite.png) 0 0 repeat-x;
 }
 .DecoratorBg {
 	top: 0;
@@ -64,21 +65,21 @@ a:hover {
 	min-height: 768px;
 	height: 100%;
 	position: absolute;
-	left: 1px;
-	background: url(../img/Sprite.png) -45px -16px repeat-y;
+	left: 0px;
+	background: url(../img/Sprite.png) -170px -16px repeat-y;
 }
 .DecoratorBgRight {
 	width: 22px;
 	min-height: 768px;
 	height: 100%;
-	right: 1px;
+	right: 0px;
 	position: absolute;
-	background: url(../img/Sprite.png) 0 -16px repeat-y;
+	background: url(../img/Sprite.png) -289px -16px repeat-y;
 }
 .DecoratorFadeGradient {
 	height: 135px;
 	width: 23px;
-	background: url(../img/Sprite.png) -85px -160px no-repeat;
+	background: url(../img/Sprite.png) 0px -160px no-repeat;
 	position: absolute;
 	bottom: 0;
 }
@@ -86,7 +87,7 @@ a:hover {
 .DecoratorBgBottom .DecoratorFadeGradient {
 	height: 23px;
 	width: 100px;
-	background: url(../img/Sprite.png) -120px -270px no-repeat;
+	background: url(../img/Sprite.png) -35px -270px no-repeat;
 	position: absolute;
 	right: 0;
 }
@@ -333,12 +334,14 @@ a:hover {
 }
 	.NewsItem {
 		clear: both;
+		text-decoration: none;
 	}
 		.NewsItem span {
 			padding: 2px 5px;
 			position: relative;
 			background: white;
 			top: -0.7em;
+			text-decoration: underline;
 		}
 	.Counters {
 		padding: 15px;
