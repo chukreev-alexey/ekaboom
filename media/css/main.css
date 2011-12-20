@@ -51,7 +51,7 @@ a:hover {
 	height: 23px;
 	left: 0;
 	position: absolute;
-	background: url(../img/Sprite.png) center 0 repeat-x;
+	background: url(../img/Sprite.png) -60px 0 repeat-x;
 }
 .DecoratorBg {
 	top: 0;
