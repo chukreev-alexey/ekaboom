@@ -52,7 +52,7 @@ a:hover {
 	left: 0;
 	position: absolute;
 	z-index: 10;
-	background: url(../img/Sprite.png) 0 0 repeat-x;
+	background: url(../img/Sprite.png) 18px 0 repeat-x;
 }
 .DecoratorBg {
 	top: 0;
@@ -65,14 +65,14 @@ a:hover {
 	min-height: 768px;
 	height: 100%;
 	position: absolute;
-	left: 0px;
-	background: url(../img/Sprite.png) -170px -16px repeat-y;
+	left: 1px;
+	background: url(../img/Sprite.png) -170px 0px repeat-y;
 }
 .DecoratorBgRight {
 	width: 22px;
 	min-height: 768px;
 	height: 100%;
-	right: 0px;
+	right: 1px;
 	position: absolute;
 	background: url(../img/Sprite.png) -289px -16px repeat-y;
 }
