@@ -18,7 +18,7 @@ def page(request, page_url):
 def category_detail(request, category):
     category = get_object_or_404(Category, url=category)
     return render(request, 'category_detail.html',
-        {'object_detail': category, 'product_list': Product.objects.filter(category=category)})
+        {'category': category, 'product_list': Product.objects.filter(category=category)})
 
 def catalog(request):
     return render(request, 'catalog.html',

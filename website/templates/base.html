@@ -37,11 +37,13 @@
 				</div>
 				<div class="Content">
 					<div class="LeftColumn">
+                        {% block categoty_menu %}
 						<ul class="SideMenu">
                             {% for item in request.category_menu %}
 							<li><a href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
                             {% endfor %}
 						</ul>
+                        {% endblock %}
 						<div class="SocialWidgets">
                             {{ request.infoblock.social_buttons|default:""|safe }}
 						</div>

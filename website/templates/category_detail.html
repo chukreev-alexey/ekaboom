@@ -1,6 +1,14 @@
 {% extends "base.html" %}
 {% load fb_versions common_tags %}
 
+{% block categoty_menu %}
+<ul class="SideMenu">
+    {% for item in request.category_menu %}
+	<li><a {% if item == category %}class="Active{% endif %} href="{{ item.get_absolute_url }}">{{ item.name }}</a></li>
+    {% endfor %}
+</ul>
+{% endblock %}
+
 {% block content %}
 <div class="ContentText">
     <div class="ProductsList">
@@ -18,6 +26,7 @@
 				</div>
                 {% endif %}
                 {% for price in item.prices.all %}
+                    <span>{{ price.label }}</span>
                     <span class="ProductItemPrice">Цена: {{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
                     <a href="#" class="RoundedCorners ProductItemBuyButton">
                         <span class="d-shadow">
