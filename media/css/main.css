@@ -21,7 +21,7 @@ body {
 	vertical-align: baseline;
 	color: black;
 }
-input[type="button"] {  width: auto; overflow: visible; }
+input[type="button"] {  width: auto; overflow: visible; cursor: pointer;}
 button, input, select, textarea { margin: 0; }
 img { vertical-align: bottom; }
 
@@ -36,7 +36,7 @@ a:hover {
 	color: #FF6633;
 }
 .MaxWidth {
-	max-width: 1000px;
+	max-width: 1150px;
 	margin: 0 auto;
 }
 .MinWidth {
@@ -51,7 +51,7 @@ a:hover {
 	height: 23px;
 	left: 0;
 	position: absolute;
-	background: url(../img/Sprite.png) center 0 no-repeat;
+	background: url(../img/Sprite.png) center 0 repeat-x;
 }
 .DecoratorBg {
 	top: 0;
@@ -64,14 +64,14 @@ a:hover {
 	min-height: 768px;
 	height: 100%;
 	position: absolute;
-	left: 0;
+	left: 1px;
 	background: url(../img/Sprite.png) -45px -16px repeat-y;
 }
 .DecoratorBgRight {
 	width: 22px;
 	min-height: 768px;
 	height: 100%;
-	right: 0;
+	right: 1px;
 	position: absolute;
 	background: url(../img/Sprite.png) 0 -16px repeat-y;
 }
@@ -81,6 +81,14 @@ a:hover {
 	background: url(../img/Sprite.png) -85px -160px no-repeat;
 	position: absolute;
 	bottom: 0;
+}
+.DecoratorBg .DecoratorFadeGradient,
+.DecoratorBgBottom .DecoratorFadeGradient {
+	height: 23px;
+	width: 100px;
+	background: url(../img/Sprite.png) -120px -270px no-repeat;
+	position: absolute;
+	right: 0;
 }
 .DecoratorInnerWrap
 {
@@ -94,12 +102,18 @@ a:hover {
 	overflow: hidden;
 	padding: 20px 0 0 0;
 }
+.HeaderShoppingCart{
+	float: left;
+	width: 30%;
+	text-align: right;
+}
 .Logo {
+	width: 68%;
 	display: block;
+	float: right;
 	text-align: right;
 }
 .Logo a {
-	display: block;
 }
 .Menu {
 	width: 80%;
@@ -174,7 +188,7 @@ a:hover {
 
 .CentralColumn {
 	float: left;
-	width: 52%;
+	width: 60%;
 }
 	.SearchFilterLink {
 		line-height: 3;
@@ -187,7 +201,6 @@ a:hover {
 	}
 		.ContentText ul,
 		.ContentText ol {
-			margin: 0 0 0 35px;
 			line-height: 1.5;
 		}
 			.ContentText ul li {
@@ -220,6 +233,7 @@ a:hover {
 		.ProductItem {
 			margin: 0 0 15px 0;
 			position: relative;
+			overflow: hidden;
 		}
 		.ProductItem img {
 			width: 50%;
@@ -241,9 +255,17 @@ a:hover {
 			margin-left: 2em;
 			list-style: disc !important;
 		}
+		.ProductItemPriceList {
+			width: 100%;
+			overflow: hidden;
+		}
+		.ProductItemPriceRow {
+			width: 100%;
+			margin: 5px 0;
+		}
 		.ProductItemPrice {
 			padding: 15px 0;
-			display: block;
+			display: inline-block;
 			color: #900;
 			font-size: 18px;
 			font-weight: normal;
@@ -261,6 +283,45 @@ a:hover {
 	.CentralColumn .RotatorWrapper {
 		width: 90%;
 	}
+	.ShoppingCartList{
+		margin: 15px 15px 5px 0;
+	}
+	.ShoppingCartHeader {
+		border-bottom: 1px solid #C8C3BF;
+	}
+		.ShoppingCartItem {
+			margin: 5px 0;
+			width: 100%;
+			overflow: hidden;
+		}
+			.ShoppingCartItemName {
+				width: 50%;
+				float: left;
+			}
+			.ShoppingCartItemAmount {
+				width: 15%;
+				float: left;
+				text-align: center;
+			}
+			.ShoppingCartItemAmount input {
+				width: 50%;
+				text-align: center;
+			}
+			.ShoppingCartItemPrice {
+				width: 20%;
+				float: left;
+				text-align: center;
+			}
+			.ShoppingCartItemDelete {
+				width: 15%;
+				float: left;
+				text-align: center;
+			}
+			.ShoppingCartTotal{
+				display: block;
+				margin: 10px 0;
+				font-weight: bold;
+			}
 
 
 .RightColumn {

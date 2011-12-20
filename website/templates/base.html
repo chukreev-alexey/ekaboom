@@ -2,12 +2,11 @@
 <html>
 <head>
 	<title>{{ request.settings.project }}{% block title %}{% if request.page.title %} - {{ request.page.title }}{% endif %}{% endblock %}</title>
-	
+	<meta charset="utf-8" />
 	<meta name="robots" content="all" />
 	<meta http-equiv="expires" content="0" />
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="cache-control" content="no-cache" />
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="text/javascript" src="/admin_media/js/jquery.min.js"></script>
 	<script type="text/javascript" src="/media/js/jquery.rotator.js"></script>
     <script type="text/javascript" src="/media/js/common.js"></script>
@@ -20,14 +19,15 @@
     {% csrf_token %}
 	<div class="LeftMargin">&nbsp;</div>
 	<div class="RightMargin">&nbsp;</div>
+	<div class="DecoratorBg"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
+	<div class="DecoratorBgLeft"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
+	<div class="DecoratorBgRight"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
 
 	<div class="MaxWidth">
 		<div class="MinWidth">
 			<div class="Wrapper">
-				<div class="DecoratorBg"></div>
-				<div class="DecoratorBgLeft"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
-				<div class="DecoratorBgRight"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
 				<div class="Header">
+					<a href="#" class="HeaderShoppingCart">В вашей корзине 9999 товаров<br />на сумму 99999 рублей</a>
 					<div class="Logo"><a href="/"><img src="/media/img/logo.jpg" alt="Логотип"/></a></div>
 					<ul class="Menu">
                         {% for item in request.top_menu %}
@@ -78,9 +78,9 @@
 						</div>
 					</div>
 				</div>
-				<div class="DecoratorBgBottom"></div>
 			</div>
 		</div>
 	</div>
+	<div class="DecoratorBgBottom"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
 </body>
 </html>
