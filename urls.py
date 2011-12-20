@@ -5,11 +5,10 @@ from common.urls import urlpatterns as common_urls
 
 urlpatterns = common_urls
 
-
-
 urlpatterns += patterns('website.views',
     url(r'^catalog/$', 'catalog', name='catalog'),
     url(r'^catalog/(?P<category>\w+)/$', 'category_detail', name='category_detail'),
+    (r'^cart/', include('cart.urls')),
 )
 
 # Serving static

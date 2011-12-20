@@ -5,6 +5,7 @@ from django.core.urlresolvers import reverse
 from django.conf import settings
 from pages.models import Page, InfoBlock
 from website.models import Settings, Category
+from cart import Cart
 
 class PageMiddleware(object):
     """
@@ -34,7 +35,7 @@ class PageMiddleware(object):
         return request
     def process_view(self, request, view_func, view_args, view_kwargs):
         request.PROJECT_TITLE = settings.PROJECT_TITLE
-        if not view_func.__module__ in ('website.views', ):
+        if not view_func.__module__ in ('website.views', 'cart.views'):
             return None
         
         url = "/".join(filter(lambda x: bool(x), request.path_info.split('/')))
@@ -42,6 +43,7 @@ class PageMiddleware(object):
         request = self.common_actions(request)
         request.top_menu = list(Page.objects.filter(pk=1)) + list(Page.objects.filter(level=1))
         request.category_menu = Category.objects.all()
+        request.cart = Cart(request, init=True)
         
         try:
             page = Page.objects.get(path=url)

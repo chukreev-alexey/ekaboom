@@ -30,7 +30,7 @@
                 <div class="ProductItemPriceRow">
                     {% if price.label %}<span class="ProductItemPrice">{{ price.label }}</span>{% endif %}
                     <span class="ProductItemPrice">{{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
-                    <a href="#" class="RoundedCorners ProductItemBuyButton">
+                    <a itemid="{{ price.id }}" href="#" class="ToCart RoundedCorners ProductItemBuyButton">
                         <span class="d-shadow">
                             <span class="d-shadow-wrap">
                                 Купить

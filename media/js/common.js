@@ -32,4 +32,34 @@ $(document).ready(function() {
 		'changeCount': 2,
 		'keyboardNavigation': true
 	});
+    
+    /*Cart*/
+    $(".ToCart").click(function(){
+        var event_object = $(this);
+        product = $(this).attr('itemid');
+        if (!product) {
+            return false;
+        }
+        $.ajax({
+            url: '/cart/add/',
+            data: {product: product},
+            dataType: 'html',
+            type: "POST",
+            error: function(){
+                alert('ошибка');
+            },
+            success: function(data){
+                data = eval('('+data+')');
+                if (data.count > 0) {
+                    $("#ShopingCart").html(data.cart_text);
+                    $("#ShopingCart").show();
+                    event_object.effect('transfer',{to: '#ShopingCart'}, 1000);
+                }
+                else {
+                     $("#ShopingCart").hide();
+                }
+            }
+        });
+        return false;
+    });
 });

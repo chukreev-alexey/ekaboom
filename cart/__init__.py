@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 import re
 from operator import attrgetter
-from website.models import Product
+from website.models import ProductPrice
 from common.templatetags.common_tags import morph, format1000
 from django.utils import simplejson
 
@@ -57,7 +57,7 @@ class Cart(object):
         for key in self.key_list():
             try:
                 data = self.request.session[key]
-                cart_item = Product.objects.get(pk=int(data['product']))
+                cart_item = ProductPrice.objects.get(pk=int(data['product']))
             except:
                 self.delete(key, is_recalc=False)
                 continue
@@ -90,7 +90,7 @@ class Cart(object):
             (format1000(self.all_sum), morph(self.all_sum, u"рубль,рубля,рублей"))
             
     def sort_list(self, uslist):
-        return sorted(uslist, key=attrgetter('sort', 'name', 'price'))
+        return sorted(uslist, key=attrgetter('label', 'price'))
     
     def serialize(self):
         return simplejson.dumps({

@@ -9,7 +9,7 @@ from django.template.loader import render_to_string
 
 from common.fields import emails_list
 from cart import Cart
-from shop.forms import OrderForm
+from cart.forms import OrderForm
 
 
 def show_cart(request):

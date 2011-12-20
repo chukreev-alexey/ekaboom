@@ -8,6 +8,7 @@
 	<meta http-equiv="pragma" content="no-cache" />
 	<meta http-equiv="cache-control" content="no-cache" />
     <script type="text/javascript" src="/admin_media/js/jquery.min.js"></script>
+    <script type="text/javascript" src="/media/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="/media/js/jquery.rotator.js"></script>
     <script type="text/javascript" src="/media/js/common.js"></script>
     <link href="/media/css/main.css" rel="stylesheet" type="text/css"/>
@@ -27,7 +28,9 @@
 		<div class="MinWidth">
 			<div class="Wrapper">
 				<div class="Header">
-					<a href="#" class="HeaderShoppingCart">В вашей корзине 9999 товаров<br />на сумму 99999 рублей</a>
+					<a href="{% url show_cart %}" id="ShopingCart" class="HeaderShoppingCart">
+                        {{ request.cart|safe }}
+                    </a>
 					<div class="Logo"><a href="/"><img src="/media/img/logo.jpg" alt="Логотип"/></a></div>
 					<ul class="Menu">
                         {% for item in request.top_menu %}
