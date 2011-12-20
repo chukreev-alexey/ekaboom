@@ -13,8 +13,7 @@
 <div class="ContentText">
     <div class="ProductsList">
         {% for item in product_list %}
-		<div class="ProductItem">
-            
+		<div class="ProductItem"> 
 			{% if item.gallery.all.0 %}<img src="{% version item.gallery.all.0.image 'product_big' %}" alt="{{ item.name }}" />{% endif %}
 			<div class="ProductItemInfo">
 				<span class="ProductItemTitle">{{ item.name }}</span>
@@ -25,23 +24,26 @@
 					{{ item.materials|safe }}
 				</div>
                 {% endif %}
-                {% for price in item.prices.all %}
-                    <span>{{ price.label }}</span>
-                    <span class="ProductItemPrice">Цена: {{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
-                    <a href="#" class="RoundedCorners ProductItemBuyButton">
-                        <span class="d-shadow">
-                            <span class="d-shadow-wrap">
-                                Купить
-                                <span class="d-sh-cn d-sh-tl">&nbsp;</span>
-                                <span class="d-sh-cn d-sh-tr">&nbsp;</span>
-                            </span>
-                            <span class="d-sh-cn d-sh-bl">&nbsp;</span>
-                            <span class="d-sh-cn d-sh-br">&nbsp;</span>
-                        </span>
-                    </a>
-                {% endfor%}
+                <div class="ProductItemPriceList">
+				{% for price in item.prices.all %}
+					<div class="ProductItemPriceRow">
+						<span class="ProductItemPrice">Цена: {{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
+						<a href="#" class="RoundedCorners ProductItemBuyButton">
+							<span class="d-shadow">
+								<span class="d-shadow-wrap">
+									Купить
+									<span class="d-sh-cn d-sh-tl">&nbsp;</span>
+									<span class="d-sh-cn d-sh-tr">&nbsp;</span>
+								</span>
+								<span class="d-sh-cn d-sh-bl">&nbsp;</span>
+								<span class="d-sh-cn d-sh-br">&nbsp;</span>
+							</span>
+						</a>
+					</div>
+				{% endfor%}
+                </div>
 			</div>
-		</div>
+        </div>
         {% endfor %}
 	</div>
 </div>
