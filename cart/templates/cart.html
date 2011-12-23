@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% load fb_versions common_tags %}
+
+{% block content %}
+	<div class="ShoppingCartList">
+		<div class="ShoppingCartItem ShoppingCartHeader">
+			<div class="ShoppingCartItemName">Наименование</div>
+			<div class="ShoppingCartItemAmount">Количество</div>
+			<div class="ShoppingCartItemPrice">Стоимость</div>
+			<div class="ShoppingCartItemDelete"></div>
+		</div>
+        {% for item in request.cart.objects %}
+			<div class="ShoppingCartItem" object_id="{{ item.id }}">
+				<div class="ShoppingCartItemName">{{ item.product }} - {{ item.label }}</div>
+				<div class="ShoppingCartItemAmount"><input object_id="{{ item.id }}" type="text" maxlength="3" value="{{ item.amount }}"></div>
+				<div class="ShoppingCartItemPrice">{{ item.sum_price }} {{ item.sum_price|morph:"рубль,рубля,рублей" }}</div>
+				<div class="ShoppingCartItemDelete"><input class="DeleteCartItem" type="button" value="Убрать"></div>
+			</div>
+		{% endfor %}
+		<span id="ShoppingCartTotal" class="ShoppingCartTotal">Итого без учета доставки {{ request.cart.all_sum_text }}</span>
+		<a href="{% url order_cart %}">Оформить заказ</a>
+	</div>
+{% endblock %}

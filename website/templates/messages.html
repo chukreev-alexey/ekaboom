@@ -1,11 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="ContentText">
     {% if messages %}
         <ul class="messages">
         {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}><h1>{{ message }}</h1></li>
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+                <p>{{ message|safe }}</p>
+            </li>
         {% endfor %}
 		</ul>
     {% endif %}
+        <a href="/">Вернуться на главную</a> <a href="{% url catalog %}">Каталог товаров</a>
+    </div>
 {% endblock %}

@@ -49,13 +49,8 @@ class Order(models.Model):
 
 class OrderItem(models.Model):
     order = models.ForeignKey(Order, verbose_name=u'заявка', related_name='items')
-    description = models.TextField(u'Описание заказа')
-    insertions = models.TextField(u'Вставки', blank=True, null=True,)
+    label = models.TextField(u'Описание заказа')
     amount = models.PositiveIntegerField(u'Количество товаров')
-    size = models.CharField(u'Размер', max_length=255, blank=True, null=True)
-    weight = models.CharField(u'Вес', max_length=255, blank=True, null=True)
-    barcode = models.CharField(u'Штрих код', max_length=255, blank=True, null=True)
-    
     price = models.DecimalField(u'Цена за единицу', blank=True, null=True,
         max_digits=10, decimal_places=2)
     @property

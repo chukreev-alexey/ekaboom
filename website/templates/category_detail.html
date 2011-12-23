@@ -14,7 +14,11 @@
     <div class="ProductsList">
     {% for item in product_list %}
         <div class="ProductItem">
-            {% if item.gallery.all.0 %}<img src="{% version item.gallery.all.0.image 'product_big' %}" alt="{{ item.name }}" />{% endif %}
+            {% with item.gallery.all.0.image as image %}{% if image %}
+                <a rel="lightbox" href="{% version image 'fancybox' %}">
+                    <img src="{% version image 'product_big' %}" alt="{{ item.name }}" />
+                </a>
+            {% endif %}{% endwith %}
             <div class="ProductItemInfo">
                 <span class="ProductItemTitle">{{ item.name }}</span>
                 Автор: {{ item.author }}

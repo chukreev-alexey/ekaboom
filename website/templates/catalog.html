@@ -7,7 +7,9 @@
     </div>
 	<div class="ProductsList">
         {% for item in object_list %}
-		<a href="{{ item.get_absolute_url }}" class="ProductsListItem">{{ item.name }}<img src="{% version item.image 'category_small' %}" alt="{{ item.name }}" title="{{ item.name }}"/></a>
+		<a href="{{ item.get_absolute_url }}" class="ProductsListItem fancybox">{{ item.name }}
+            <img src="{% version item.image 'category_index_list' %}" alt="{{ item.name }}" title="{{ item.name }}"/>
+        </a>
 		{% endfor %}
 	</div>
 {% endblock %}

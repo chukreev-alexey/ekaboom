@@ -1,0 +1,16 @@
+{{ subject }}
+------------------------------------------------------------------------------
+Имя: {{ fio }}
+Контактный телефон: {{ phones }}
+E-mail: {{ email }}
+{% if comment %}
+Комментарий:
+{{ comment }}
+{% endif%}
+
+-----------------------------------ЗАКАЗ--------------------------------------
+{% for item in cart.objects %}
+{{ forloop.counter }}.  {{ item.product.name }} - {{ item.label }} {{ item.amount }} шт.  {% if item.price %}{{ item.price }} руб. {% endif %}
+{% endfor %}
+
+Итого без учета доставки: {{ cart.all_sum }} руб.

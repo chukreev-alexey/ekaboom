@@ -1,0 +1,34 @@
+{{ subject }}
+
+<hr />
+<table width="100%" border="0" cellspacing="0" cellpadding="7">
+	<tr><th align="left">Имя:</th><td>{{ fio }}</td></tr>
+	<tr><th align="left">Адрес доставки:</th><td>{{ address }}</td></tr>
+	<tr><th align="left">Телефон:</th><td>{{ phones }}</td></tr>
+	<tr><th align="left">Email:</th><td>{{ email }}</td></tr>
+	{% if comment %}
+	<tr><th>Комментарий:</th><td>{{ comment }}</td></tr>
+	{% endif%}
+</table>
+
+<hr />
+
+<table width="100%" border="1" cellspacing="0" cellpadding="7">
+	<tr>
+		<th align="left">№</th><th>Название</th>
+		<th align="left">Количество</th>
+		<th align="left">Цена за единицу</th>
+		<th align="left">Общая стоимость</th>
+	</tr>
+	{% for item in cart.objects %}
+		<tr>
+			<td>{{ forloop.counter }}</td>
+			<td>{{ item.product.name }} - {{ item.label }}</td>
+			<td>{{ item.amount }}</td>
+			<td>{{ item.price }}</td>
+			<td>{{ item.sum_price }}</td>
+		</tr>
+	{% endfor %}
+</table>
+
+<p>Итого без учета доставки <b>{{ cart.all_sum }}</b> руб.</p>

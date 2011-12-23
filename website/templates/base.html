@@ -10,14 +10,19 @@
     <script type="text/javascript" src="/admin_media/js/jquery.min.js"></script>
     <script type="text/javascript" src="/media/js/jquery-ui.js"></script>
 	<script type="text/javascript" src="/media/js/jquery.rotator.js"></script>
+    <script type="text/javascript" src="/media/js/fancybox/jquery.easing-1.3.pack.js"></script>
+	<script type="text/javascript" src="/media/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
+	<script type="text/javascript" src="/media/js/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
     <script type="text/javascript" src="/media/js/common.js"></script>
+    
     <link href="/media/css/main.css" rel="stylesheet" type="text/css"/>
-	<!--[if lte IE 6]>
+	<link href="/media/js/fancybox/jquery.fancybox-1.3.2.css" rel="stylesheet" type="text/css" />
+    <!--[if lte IE 6]>
 		<link href="/media/css/ie6.css" rel="stylesheet" type="text/css" />
 	<![endif]-->
 </head>
 <body>
-    {% csrf_token %}
+    {% block csrf_token %}{% csrf_token %}{% endblock %}
 	<div class="LeftMargin">&nbsp;</div>
 	<div class="RightMargin">&nbsp;</div>
 	<div class="DecoratorBg"><div class="DecoratorInnerWrap"><div class="DecoratorFadeGradient"></div></div></div>
@@ -66,7 +71,9 @@
                                 <div class="Rotator" id="Rotator">
                                     {% for item in rotators %}{% with item.gallery.all as images %}{% if images.0 %}
                                     <div class="RotatorItem">
-                                        <a href="{{ item.get_absolute_url }}"><img src="{% version images.0.image 'category_small' %}" alt="{{ item.name }}" /></a>
+                                        <a rel="lightbox" href="{% version images.0.image 'fancybox' %}">
+                                            <img src="{% version images.0.image 'category_small' %}" alt="{{ item.name }}" />
+                                        </a>
                                     </div>
                                     {% endif %}{% endwith %}{% endfor %}
                                 </div>
