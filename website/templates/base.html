@@ -1,4 +1,4 @@
-{% load fb_versions %}<!DOCTYPE html>
+{% load fb_versions thumbnail %}<!DOCTYPE html>
 <html>
 <head>
 	<title>{{ request.settings.project }}{% block title %}{% if request.page.title %} - {{ request.page.title }}{% endif %}{% endblock %}</title>
@@ -16,6 +16,7 @@
     <script type="text/javascript" src="/media/js/common.js"></script>
     
     <link href="/media/css/main.css" rel="stylesheet" type="text/css"/>
+    <link href="/media/css/csskit.css" rel="stylesheet" type="text/css"/>
 	<link href="/media/js/fancybox/jquery.fancybox-1.3.2.css" rel="stylesheet" type="text/css" />
     <!--[if lte IE 6]>
 		<link href="/media/css/ie6.css" rel="stylesheet" type="text/css" />
@@ -71,9 +72,18 @@
                                 <div class="Rotator" id="Rotator">
                                     {% for item in rotators %}{% with item.gallery.all as images %}{% if images.0 %}
                                     <div class="RotatorItem">
+										<!--
+										{% thumbnail images.0.image "700" crop="center" as big %}
+											{% thumbnail images.0.image "67x90" as small %}
+											<a rel="lightbox" href="{{ big.url }}"><img src="{{ small.url }}" alt="{{ item.name }}" /></a>
+											{% endthumbnail %}
+										{% endthumbnail %}
+										-->
+										
                                         <a rel="lightbox" href="{% version images.0.image 'fancybox' %}">
                                             <img src="{% version images.0.image 'category_small' %}" alt="{{ item.name }}" />
                                         </a>
+										
                                     </div>
                                     {% endif %}{% endwith %}{% endfor %}
                                 </div>
@@ -82,10 +92,23 @@
                         {% endblock %}
 					</div>
 					<div class="RightColumn">
-						<a href="#" class="NewsItem">
+                        {% if request.infoblock.skidka %}
+                        <a href="#" class="NewsItem">
                             {{ request.infoblock.skidka|default:""|safe }}
 						</a>
-						<div class="Counters">
+						{% endif %}
+                        
+                        
+                        {% block news %}
+                            {% for item in news_list %}
+                                <a href="#" class="NewsItem">
+                                    {% if item.image %}<img src="{% version item.image 'category_small' %}" alt="{{ item.name }}" />{% endif %}
+                                    <span>{{ item.content|safe }}</span>
+                                </a>
+                            {% endfor %}
+                        {% endblock %}
+                        
+                        <div class="Counters">
 							{{ request.infoblock.metrika|default:""|safe }}
 						</div>
 					</div>

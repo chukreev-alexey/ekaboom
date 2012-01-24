@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load fb_versions common_tags %}
+{% load fb_versions common_tags thumbnail %}
 
 {% block categoty_menu %}
 <ul class="SideMenu">
@@ -11,12 +11,18 @@
 
 {% block content %}
 <div class="ContentText">
+    {{ category.content|default:""|safe }}
     <div class="ProductsList">
     {% for item in product_list %}
-        <div class="ProductItem">
+        <div class="ProductItem" style="border-bottom: 1px solid #999;">
             {% with item.gallery.all.0.image as image %}{% if image %}
+				<!--{% thumbnail pimage "700" crop="center" as big %}
+					{% thumbnail pimage "240x180" crop="center" as small %}
+						<a rel="lightbox" href="{{ big.url }}"><img src="{{ small.url }}" alt="{{ item.name }}" /></a>
+					{% endthumbnail %}
+				{% endthumbnail %}-->
                 <a rel="lightbox" href="{% version image 'fancybox' %}">
-                    <img src="{% version image 'product_big' %}" alt="{{ item.name }}" />
+                    <img style="border: 1px solid #999;" src="{% version image 'product_big' %}" alt="{{ item.name }}" />
                 </a>
             {% endif %}{% endwith %}
             <div class="ProductItemInfo">
@@ -28,12 +34,26 @@
                     {{ item.materials|safe }}
                     </div>
                 {% endif %}
+                {{ item.content|default:""|safe }}
             </div>
+            <div style="clear: both;"></div>
+            {% if item.gallery.all|length > 1 %}
+            <div class="ProductGallery" style="margin-top: 24px;">
+                {% for img in item.gallery.all|slice:"1:" %}
+                <div style="float; left;">
+                    <a rel="lightbox" href="{% version img.image 'fancybox' %}">
+                        <img style="margin-right: 2%; border: 1px solid #999;" src="{% version img.image 'product_small' %}"/>
+                    </a>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            <div style="clear: both;"></div>
             <div class="ProductItemPriceList">
             {% for price in item.prices.all %}
                 <div class="ProductItemPriceRow">
-                    {% if price.label %}<span class="ProductItemPrice">{{ price.label }}</span>{% endif %}
-                    <span class="ProductItemPrice">{{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}</span>
+                    {% if price.label %}<span class="ProductItemPrice">{{ price.label }}: </span>{% endif %}
+                    <span class="ProductItemPrice">{% if price.price == 0 %} цена договорная{% else %}{{ price.price }} {{ price.price|morph:"рубль,рубля,рублей" }}{% endif %}</span>
                     <a itemid="{{ price.id }}" href="#" class="ToCart RoundedCorners ProductItemBuyButton">
                         <span class="d-shadow">
                             <span class="d-shadow-wrap">

@@ -1,18 +1,20 @@
 # -*- coding: utf-8 -*-
 from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
+
 from django.template.loader import render_to_string
 from django.contrib import messages
 from django.conf import settings
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 
 from common.fields import emails_list
 
-from website.models import Product, Category
+from website.models import Product, Category, News
 
 def page(request, page_url):
     template = 'base.html'
-    context = {}
+    context = {'news_list': News.objects.all()[:3]}
     return render(request, template, context)
 
 def category_detail(request, category):
@@ -41,7 +43,7 @@ def feedback(request):
             send_mail(subject, letter_content,
                       letter_context['email'] or recipients[0], recipients)
             messages.add_message(request, messages.SUCCESS, u"Ваше письмо успешно отправлено администрации сайта.")
-            return redirect('')
+            return redirect(reverse('message_list'))
     else:
         form = FeedbackForm()
     return render(request, 'feedback.html', {'form': form})

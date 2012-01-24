@@ -77,6 +77,7 @@ class Category(models.Model):
     name = models.CharField(u'Название', max_length=100)
     url = models.CharField(u'Адрес', max_length=100, unique=True)
     image = FileBrowseField(u"Фото", format='Image', max_length=255)
+    content = tinymce_models.HTMLField(u'Описание', blank=True, null=True)
     sort = models.IntegerField(u'Порядок', default=0)
     visible = models.BooleanField(u'Показывать', default=False)
     

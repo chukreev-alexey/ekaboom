@@ -7,6 +7,7 @@ urlpatterns = common_urls
 
 urlpatterns += patterns('website.views',
     url(r'^catalog/$', 'catalog', name='catalog'),
+    url(r'^contact/$', 'feedback', name='feedback'),
     url(r'^catalog/(?P<category>\w+)/$', 'category_detail', name='category_detail'),
     (r'^cart/', include('cart.urls')),
 )

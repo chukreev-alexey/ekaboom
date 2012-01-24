@@ -43,12 +43,17 @@ INSTALLED_APPS = (
     'mptt',
     'treeadmin',
     'south',
+	'sorl.thumbnail',
     'seo',
     'gallery',
     'cart',
     'pages',
     'website',
 )
+
+# THUMBNAIL
+THUMBNAIL_ENGINE = 'sorl.thumbnail.engines.convert_engine.Engine'
+THUMBNAIL_DEBUG = False
 
 # MESSAGES
 MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
@@ -64,15 +69,27 @@ FILEBROWSER_VERSIONS = {
     'fb_thumb': {'verbose_name': 'Admin Thumbnail', 'width': 40, 'height': 40, 'opts': 'upscale'},
     'fancybox': {'verbose_name': 'FancyBox image', 'width': 700, 'height': '', 'opts': 'upscale'},
     'category_small': {'verbose_name': u'Для списка категорий', 'width': 67, 'height': 90, 'opts': 'upscale'},
-    'category_index_list': {'verbose_name': u'Для списка категорий', 'width': '', 'height': 90, 'opts': 'upscale'},
-    'product_small': {'verbose_name': u'Маленькая для карточки товаров', 'width': 60, 'height': 45, 'opts': 'upscale'},
-    'product_big': {'verbose_name': u'Большая для карточки товаров', 'width': 240, 'height': 180, 'opts': 'upscale'},
+    'category_index_list': {'verbose_name': u'Для списка категорий', 'width': 120, 'height': 200, 'opts': 'upscale'},
+    'product_small': {'verbose_name': u'Маленькая для карточки товаров', 'width': 60, 'height': '', 'opts': 'upscale'},
+    'product_big': {'verbose_name': u'Большая для карточки товаров', 'width': 180, 'height': '', 'opts': 'upscale'},
 }
 FILEBROWSER_ADMIN_VERSIONS = ['fb_thumb']
 FILEBROWSER_ADMIN_THUMBNAIL ='fb_thumb'
 
 # CAPTCHA SETTINGS
 CAPTCHA_CACHE_PREFIX = PROJECT_NAME+"_captcha_"
+CAPTCHA_HTML_TEMPLATE_WITH_REFRESH = u"""
+<div class="CaptchaBlock">
+    <div class="Captcha">
+        <img id="captcha_field_image" src="%(src)s?%(rnd)s" alt="%(alt)s" width="%(width)s" height="%(height)s"/><br />
+        <a onclick="var img=document.getElementById('captcha_field_image'); img.src=img.src.substring(0,img.src.indexOf('?')+1)+Math.random();return false;" href="#refresh">Неразборчиво?</a>
+    </div>
+    <div class="CaptchaInput">
+        <input%(input_attrs)s maxlength="%(length)s" />
+    </div>
+</div>
+"""
+
 
 # TINYMCE SETTINGS
 TINYMCE_JS_ROOT = os.path.join(ADMIN_MEDIA_ROOT, 'tiny_mce')

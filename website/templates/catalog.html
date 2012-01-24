@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load fb_versions %}
+{% load fb_versions thumbnail %}
 
 {% block content %}
 	<div class="ContentText">
@@ -7,9 +7,14 @@
     </div>
 	<div class="ProductsList">
         {% for item in object_list %}
+		<!--{% thumbnail item.image "x90" crop="center" as im %}
+			<a href="{{ item.get_absolute_url }}"><img src="{{ im.url }}" alt="{{ item.name }}" /></a>
+		{% endthumbnail %}-->
+		
 		<a href="{{ item.get_absolute_url }}" class="ProductsListItem fancybox">{{ item.name }}
             <img src="{% version item.image 'category_index_list' %}" alt="{{ item.name }}" title="{{ item.name }}"/>
         </a>
+		
 		{% endfor %}
 	</div>
 {% endblock %}
