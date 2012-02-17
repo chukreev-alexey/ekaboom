@@ -104,9 +104,9 @@ a:hover {
 	padding: 20px 0 0 0;
 }
 .HeaderShoppingCart{
-	float: left;
+	/*float: left;
 	width: 30%;
-	text-align: right;
+	text-align: right;*/
 }
 .Logo {
 	width: 68%;
@@ -218,7 +218,7 @@ a:hover {
 	}
 		.ProductsListItem {
 			width: 160px;
-            height: 200px;
+            height: 160px;
             border: 1px solid grey;
 			margin: 0 1% 5px 1%;
 			display: inline-block;

@@ -2,6 +2,8 @@
 from django import forms
 from supercaptcha import CaptchaField
 
+from .models import Author
+
 def as_eul(self):
     return self._html_output(
         normal_row = u'<li%(html_class_attr)s><div class="FormLabel">%(label)s</div> <div class="FormField">%(field)s</div><div class="FormError">%(errors)s</div><div class="FormHelpText">%(help_text)s</div></li>',
@@ -17,3 +19,9 @@ class FeedbackForm(forms.Form):
     email = forms.EmailField(label=u'Email')
     comment = forms.CharField(label=u'Комментарий', widget=forms.Textarea)
     captcha = CaptchaField(label=u'Защита от роботов')
+
+class FilterForm(forms.Form):
+    query = forms.CharField(label=u'Название', required=False)
+    author = forms.ModelChoiceField(label=u'Авторы', required=False,
+        queryset=Author.objects.all(), empty_label=' -- ')
+    

@@ -14,21 +14,30 @@ from website.models import Product, Category, News
 
 def page(request, page_url):
     template = 'base.html'
-    context = {'news_list': News.objects.all()[:3]}
+    context = {}
     return render(request, template, context)
 
 def category_detail(request, category):
+    from .forms import FilterForm
+    form = FilterForm(request.GET or None)
     category = get_object_or_404(Category, url=category)
-    return render(request, 'category_detail.html',
-        {'category': category, 'product_list': Product.objects.filter(category=category)})
+    product_list = Product.objects.filter(category=category)
+    if form.is_valid():
+        if form.cleaned_data.get('query'):
+            product_list = product_list.filter(name__icontains=form.cleaned_data['query'])
+        if form.cleaned_data.get('author'):
+            product_list = product_list.filter(author=form.cleaned_data['author'])
+    return render(request, 'category_detail.html', {
+        'category': category, 'form': form,
+        'product_list': product_list})
 
 def catalog(request):
     return render(request, 'catalog.html',
         {'object_list': Category.objects.all()})
-    
+
 def message_list(request, arg=None):
     return render(request, 'messages.html')
-        
+
 def feedback(request):
     from website.forms import FeedbackForm
     if request.method == 'POST':

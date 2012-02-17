@@ -66,6 +66,7 @@ $(document).ready(function() {
                     $("#ShopingCart").show();
                     event_object.fadeOut('slow', function() {
                         $(this).fadeIn('slow');
+                        alert('Товар добавлен в корзину');
                     });
                     
                     //event_object.effect('transfer',{to: '#ShopingCart'}, 1000);

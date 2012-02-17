@@ -14,7 +14,7 @@
 	<script type="text/javascript" src="/media/js/fancybox/jquery.mousewheel-3.0.4.pack.js"></script>
 	<script type="text/javascript" src="/media/js/fancybox/jquery.fancybox-1.3.2.pack.js"></script>
     <script type="text/javascript" src="/media/js/common.js"></script>
-    
+
     <link href="/media/css/main.css" rel="stylesheet" type="text/css"/>
     <link href="/media/css/csskit.css" rel="stylesheet" type="text/css"/>
 	<link href="/media/js/fancybox/jquery.fancybox-1.3.2.css" rel="stylesheet" type="text/css" />
@@ -34,9 +34,7 @@
 		<div class="MinWidth">
 			<div class="Wrapper">
 				<div class="Header">
-					<a href="{% url show_cart %}" id="ShopingCart" class="HeaderShoppingCart">
-                        {{ request.cart|safe }}
-                    </a>
+					<!--<a href="{% url show_cart %}" id="ShopingCart" class="HeaderShoppingCart">{{ request.cart|safe }}</a>-->
 					<div class="Logo"><a href="/"><img src="/media/img/logo.jpg" alt="Логотип"/></a></div>
 					<ul class="Menu">
                         {% for item in request.top_menu %}
@@ -58,12 +56,6 @@
 						</div>
 					</div>
 					<div class="CentralColumn">
-                        {% block content %}
-                            <div class="ContentText">
-                            {{ request.page.content|default:""|safe }}
-                            </div>
-						{% endblock %}
-                        
                         {% block rotator %}
                             {% if request.page.id %}{% with request.page.products.all as rotators %}{% if rotators %}
                             <div class="RotatorWrapper">
@@ -79,35 +71,45 @@
 											{% endthumbnail %}
 										{% endthumbnail %}
 										-->
-										
+
                                         <a rel="lightbox" href="{% version images.0.image 'fancybox' %}">
                                             <img src="{% version images.0.image 'category_small' %}" alt="{{ item.name }}" />
                                         </a>
-										
+
                                     </div>
                                     {% endif %}{% endwith %}{% endfor %}
                                 </div>
                             </div>
                             {% endif %}{% endwith %}{% endif %}
                         {% endblock %}
+                        {% block content %}
+                            <div class="ContentText">
+                            {{ request.page.content|default:""|safe }}
+                            </div>
+						{% endblock %}
+                        <div class="Bottom">
+                            {{ request.infoblock.copyright|default:""|safe }}
+                        </div>
 					</div>
 					<div class="RightColumn">
+                        <a href="{% url show_cart %}" id="ShopingCart" class="NewsItem" style="background-color: #eee;">{{ request.cart|safe }}</a><br /><br />
+                        <!--
                         {% if request.infoblock.skidka %}
                         <a href="#" class="NewsItem">
                             {{ request.infoblock.skidka|default:""|safe }}
 						</a>
 						{% endif %}
-                        
-                        
+                        -->
+
                         {% block news %}
-                            {% for item in news_list %}
+                            {% for item in request.news_list %}
                                 <a href="#" class="NewsItem">
                                     {% if item.image %}<img src="{% version item.image 'category_small' %}" alt="{{ item.name }}" />{% endif %}
                                     <span>{{ item.content|safe }}</span>
                                 </a>
                             {% endfor %}
                         {% endblock %}
-                        
+
                         <div class="Counters">
 							{{ request.infoblock.metrika|default:""|safe }}
 						</div>
